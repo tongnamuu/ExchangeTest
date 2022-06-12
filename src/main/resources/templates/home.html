@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <form role="form" action="/remit" method="post">
+        <div>
+            <label for>수취 국가</label>
+            <select name="currency" id="currency">
+                <option value="currency">국가 선택</option>
+                <option th:each="cur : ${currencies}"
+                        th:value="${cur.name}"
+                        th:text="${cur.name}" />
+            </select>
+        </div>
+        <div>
+            <label th:for="amount">송금액</label>
+            <input type="number" name="amount"  placeholder="보낼 금액">
+        </div>
+        <button type="submit">Submit</button>
+    </form>
+
+
+    <table>
+        <thead>
+        <tr>
+            <th>보낸 달러</th>
+            <th>환율</th>
+            <th>수취 국가</th>
+            <th>송금 상태</th>
+            <th>생성 시기</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="remmitance : ${remittanceList}">
+            <td th:text="${remmitance.amount}"></td>
+            <td th:text="${remmitance.rate}"></td>
+            <td th:text="${remmitance.changeTo.name}"></td>
+            <td th:text="${remmitance.status}"></td>
+            <td th:text="${remmitance.createdAt}"></td>
+        </tr>
+        </tbody>
+    </table>
+</body>
+</html>

@@ -1,0 +1,3 @@
+currency:
+  url: https://api.apilayer.com/currency_data/live
+  key: ## Setup this in IntelliJ Run Configuration
